@@ -57,10 +57,11 @@ void R_Alias_clip_z (finalvert_t *pfv0, finalvert_t *pfv1, finalvert_t *out)
 		scale = (ALIAS_Z_CLIP_PLANE - pav0->fv[2]) /
 				(pav1->fv[2] - pav0->fv[2]);
 	
-		avout.fv[0] = pav0->fv[0] + (pav1->fv[0] - pav0->fv[0]) * scale;
-		avout.fv[1] = pav0->fv[1] + (pav1->fv[1] - pav0->fv[1]) * scale;
-		avout.fv[2] = ALIAS_Z_CLIP_PLANE;
+		avout.fv[0] = pav0->fv[0] + (pav1->fv[0] - pav0->fv[0]) * scale; // X-value
+		avout.fv[1] = pav0->fv[1] + (pav1->fv[1] - pav0->fv[1]) * scale; // Y-value
+		avout.fv[2] = ALIAS_Z_CLIP_PLANE; // Z-value
 	
+		//different attributes of the vertex
 		out->v[2] =	pfv0->v[2] + (pfv1->v[2] - pfv0->v[2]) * scale;
 		out->v[3] =	pfv0->v[3] + (pfv1->v[3] - pfv0->v[3]) * scale;
 		out->v[4] =	pfv0->v[4] + (pfv1->v[4] - pfv0->v[4]) * scale;
@@ -70,10 +71,11 @@ void R_Alias_clip_z (finalvert_t *pfv0, finalvert_t *pfv1, finalvert_t *out)
 		scale = (ALIAS_Z_CLIP_PLANE - pav1->fv[2]) /
 				(pav0->fv[2] - pav1->fv[2]);
 	
-		avout.fv[0] = pav1->fv[0] + (pav0->fv[0] - pav1->fv[0]) * scale;
-		avout.fv[1] = pav1->fv[1] + (pav0->fv[1] - pav1->fv[1]) * scale;
-		avout.fv[2] = ALIAS_Z_CLIP_PLANE;
+		avout.fv[0] = pav1->fv[0] + (pav0->fv[0] - pav1->fv[0]) * scale; //X-value
+		avout.fv[1] = pav1->fv[1] + (pav0->fv[1] - pav1->fv[1]) * scale; //Y-value
+		avout.fv[2] = ALIAS_Z_CLIP_PLANE; // Z-value
 	
+		//different attributes of the vertex
 		out->v[2] =	pfv1->v[2] + (pfv0->v[2] - pfv1->v[2]) * scale;
 		out->v[3] =	pfv1->v[3] + (pfv0->v[3] - pfv1->v[3]) * scale;
 		out->v[4] =	pfv1->v[4] + (pfv0->v[4] - pfv1->v[4]) * scale;
